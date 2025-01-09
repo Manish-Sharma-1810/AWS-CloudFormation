@@ -7,13 +7,13 @@ This repo contains various cloudformation templates
 1. **Create a S3 bucket for deployment**:
 
     ```sh
-    aws s3api create-bucket --bucket my-cf-bucket-45trk --region us-east-1
+    aws s3api create-bucket --bucket <BUCKET_NAME> --region us-east-1
     ```
 
 2. **Copy the code to s3 bucket**:
 
     ```sh
-    aws s3 cp ./ s3://my-cf-bucket-45trk/ --recursive --region us-east-1
+    aws s3 cp ./ s3://<BUCKET_NAME>/ --recursive --region us-east-1
     ```
 
 3. **Create CloudFormation stack for the application**:
@@ -21,9 +21,9 @@ This repo contains various cloudformation templates
     ```sh
     aws cloudformation create-stack \
     --stack-name iam \
-    --template-url https://my-cf-bucket-45trk.s3.amazonaws.com/iam.yaml \
+    --template-url https://<BUCKET_NAME>.s3.amazonaws.com/iam.yaml \
     --parameters \
-        ParameterKey=BucketName,ParameterValue=my-cf-bucket-45trk \
+        ParameterKey=BucketName,ParameterValue=<BUCKET_NAME> \
         ParameterKey=KeyName,ParameterValue=policy.json \
         ParameterKey=LambdaExecutionPolicyName,ParameterValue=LambdaExecutionPolicy \
         ParameterKey=LambdaExecutionRoleName,ParameterValue=LambdaExecutionRole \
