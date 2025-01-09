@@ -13,7 +13,7 @@ This repo contains various cloudformation templates
 2. **Copy the code to s3 bucket**:
 
     ```sh
-    aws s3 cp ./ s3://<BUCKET_NAME>/ --recursive --region us-east-1
+    aws s3 cp ./src/ s3://<BUCKET_NAME>/ --recursive --region us-east-1
     ```
 
 3. **Create CloudFormation stack for the application**:
